@@ -33,10 +33,12 @@ public class PlayerServiceImpl implements PlayerService {
         return objectMapper.convertValue(playerEntityResponse, ResponsePlayerDTO.class);
     }
 
-
     @Override
     public List<PlayerDTO> getPlayer() {
-        return List.of();
-    }
+        List<Player> players = playerRepository.findAll();
 
+        return players.stream()
+                .map(Player -> objectMapper.convertValue(Player, PlayerDTO.class))
+                .toList();
+    }
 }
