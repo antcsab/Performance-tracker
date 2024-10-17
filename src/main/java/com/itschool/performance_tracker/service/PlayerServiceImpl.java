@@ -2,6 +2,7 @@ package com.itschool.performance_tracker.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.itschool.performance_tracker.entity.Player;
+import com.itschool.performance_tracker.exceptions.PlayerNotFoundException;
 import com.itschool.performance_tracker.models.dtos.PlayerDTO;
 import com.itschool.performance_tracker.models.dtos.RequestPlayerDTO;
 import com.itschool.performance_tracker.models.dtos.ResponsePlayerDTO;
@@ -40,5 +41,17 @@ public class PlayerServiceImpl implements PlayerService {
         return players.stream()
                 .map(Player -> objectMapper.convertValue(Player, PlayerDTO.class))
                 .toList();
+    }
+
+    @Override
+    public  void deletePlayer(Long Id) {
+        if (Id == null) {
+            throw new IllegalArgumentException("Player ID cannot be null.");
+        }
+        Player existingPackage = playerRepository.findById(Id)
+                .orElseThrow(() -> new PlayerNotFoundException(Id));
+
+        playerRepository.delete(existingPackage);
+        log.info("Player with Id {} was deleted", Id);
     }
 }

@@ -12,4 +12,6 @@ public interface PlayerService {
     ResponsePlayerDTO createPlayer(RequestPlayerDTO requestPlayerDTO);
 
     List<PlayerDTO> getPlayer();
+
+    void deletePlayer(Long Id);
 }
