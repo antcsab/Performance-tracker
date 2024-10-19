@@ -5,7 +5,6 @@ import com.itschool.performance_tracker.models.dtos.PlayerDTO;
 import com.itschool.performance_tracker.models.dtos.RequestPlayerDTO;
 import com.itschool.performance_tracker.models.dtos.ResponsePlayerDTO;
 import com.itschool.performance_tracker.service.PlayerService;
-import jakarta.persistence.Id;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,5 +36,10 @@ public class PlayerController {
     public ResponseEntity<Void> deletePlayer(@RequestParam(value = "Id") Long Id) {
         playerService.deletePlayer(Id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/api/performance-tracker")
+    public ResponseEntity<PlayerDTO> updatePlayer(@RequestParam(value = "Id") Long Id, @RequestBody PlayerDTO playerDTO) {
+        return ResponseEntity.ok(playerService.updatePlayerById(Id, playerDTO));
     }
 }

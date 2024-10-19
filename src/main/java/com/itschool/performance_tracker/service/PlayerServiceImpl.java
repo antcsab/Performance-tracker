@@ -44,7 +44,7 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public  void deletePlayer(Long Id) {
+    public void deletePlayer(Long Id) {
         if (Id == null) {
             throw new IllegalArgumentException("Player ID cannot be null.");
         }
@@ -53,5 +53,27 @@ public class PlayerServiceImpl implements PlayerService {
 
         playerRepository.delete(existingPackage);
         log.info("Player with Id {} was deleted", Id);
+    }
+
+    public PlayerDTO updatePlayerById(Long Id, PlayerDTO playerDTO) {
+        if (Id == null) {
+            throw new IllegalArgumentException("Player Id cannot be null.");
+        }
+        Player existingPlayer = playerRepository.findById(Id)
+                .orElseThrow(() -> new PlayerNotFoundException(Id));
+
+        updateExistingPlayer(existingPlayer, playerDTO);
+        Player updatePlayer = playerRepository.save(existingPlayer);
+        log.info("Player with Id {} was updated", existingPlayer.getId());
+
+        return objectMapper.convertValue(updatePlayer, PlayerDTO.class);
+    }
+
+    private void updateExistingPlayer(Player existingPlayer, PlayerDTO playerDTO) {
+        existingPlayer.getFirstName(playerDTO.getFirstName());
+        existingPlayer.getLastName(playerDTO.getLastName());
+        existingPlayer.getAgentId(playerDTO.getAgentId());
+        existingPlayer.getContractEnd(playerDTO.getContractEnd());
+        existingPlayer.getPosition(playerDTO.getPosition());
     }
 }

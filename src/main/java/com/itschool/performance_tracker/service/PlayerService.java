@@ -13,5 +13,7 @@ public interface PlayerService {
 
     List<PlayerDTO> getPlayer();
 
+    PlayerDTO updatePlayerById(Long Id, PlayerDTO playerDTO);
+
     void deletePlayer(Long Id);
 }

@@ -3,8 +3,6 @@ package com.itschool.performance_tracker.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 
 
 @Entity
@@ -43,8 +41,8 @@ public class Player {
     // private Set<Game> game = new HashSet<>();
 
 
-    public Long getAgentId() {
-        return agentId;
+    public Long getAgentId(Long agentId) {
+        return this.agentId;
     }
 
     public void setAgentId(Long agentId) {
@@ -59,32 +57,32 @@ public class Player {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirstName(String firstName) {
+        return this.firstName;
     }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastName(String lastName) {
+        return this.lastName;
     }
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public String getPosition() {
-        return position;
+    public String getPosition(String position) {
+        return this.position;
     }
 
     public void setPosition(String position) {
         this.position = position;
     }
 
-    public LocalDate getContractEnd() {
-        return contractEnd;
+    public LocalDate getContractEnd(LocalDate contractEnd) {
+        return this.contractEnd;
     }
 
     public void setContractEnd(LocalDate contractEnd) {
