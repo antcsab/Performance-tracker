@@ -70,10 +70,10 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     private void updateExistingPlayer(Player existingPlayer, PlayerDTO playerDTO) {
-        existingPlayer.getFirstName(playerDTO.getFirstName());
-        existingPlayer.getLastName(playerDTO.getLastName());
-        existingPlayer.getAgentId(playerDTO.getAgentId());
-        existingPlayer.getContractEnd(playerDTO.getContractEnd());
-        existingPlayer.getPosition(playerDTO.getPosition());
+        existingPlayer.setFirstName(playerDTO.getFirstName());
+        existingPlayer.setLastName(playerDTO.getLastName());
+        existingPlayer.setAgentId(playerDTO.getAgentId());
+        existingPlayer.setContractEnd(playerDTO.getContractEnd());
+        existingPlayer.setPosition(playerDTO.getPosition());
     }
 }

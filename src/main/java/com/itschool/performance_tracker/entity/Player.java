@@ -41,14 +41,6 @@ public class Player {
     // private Set<Game> game = new HashSet<>();
 
 
-    public Long getAgentId(Long agentId) {
-        return this.agentId;
-    }
-
-    public void setAgentId(Long agentId) {
-        this.agentId = agentId;
-    }
-
     public Long getId() {
         return id;
     }
@@ -57,36 +49,44 @@ public class Player {
         this.id = id;
     }
 
-    public String getFirstName(String firstName) {
-        return this.firstName;
+    public String getFirstName() {
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public String getLastName(String lastName) {
-        return this.lastName;
+    public String getLastName() {
+        return lastName;
     }
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public String getPosition(String position) {
-        return this.position;
+    public String getPosition() {
+        return position;
     }
 
     public void setPosition(String position) {
         this.position = position;
     }
 
-    public LocalDate getContractEnd(LocalDate contractEnd) {
-        return this.contractEnd;
+    public LocalDate getContractEnd() {
+        return contractEnd;
     }
 
     public void setContractEnd(LocalDate contractEnd) {
         this.contractEnd = contractEnd;
+    }
+
+    public Long getAgentId() {
+        return agentId;
+    }
+
+    public void setAgentId(Long agentId) {
+        this.agentId = agentId;
     }
 }
 
