@@ -1,16 +1,16 @@
-package com.itschool.performance_tracker.controller;
+package com.itschool.performance_tracker.controllers;
 
 
 import com.itschool.performance_tracker.models.dtos.PlayerDTO;
 import com.itschool.performance_tracker.models.dtos.RequestPlayerDTO;
 import com.itschool.performance_tracker.models.dtos.ResponsePlayerDTO;
-import com.itschool.performance_tracker.service.PlayerService;
+import com.itschool.performance_tracker.services.PlayerService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+@RequestMapping("/api/performance-tracker")
 @RestController
 public class PlayerController {
 
@@ -21,25 +21,25 @@ public class PlayerController {
     }
 
 
-    @PostMapping("/api/performance-tracker")
+    @PostMapping()
     public ResponseEntity<ResponsePlayerDTO> createPlayer(@RequestBody RequestPlayerDTO requestPlayerDTO) {
         return ResponseEntity.ok(playerService.createPlayer(requestPlayerDTO));
 
     }
 
-    @GetMapping("/api/performance-tracker")
+    @GetMapping()
     public ResponseEntity<List<PlayerDTO>> getPlayer() {
         return ResponseEntity.ok(playerService.getPlayer());
     }
 
-    @DeleteMapping("/api/performance-tracker")
-    public ResponseEntity<Void> deletePlayer(@RequestParam(value = "Id") Long Id) {
-        playerService.deletePlayer(Id);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletePlayer(@PathVariable(value = "id") Long id) {
+        playerService.deletePlayer(id);
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/api/performance-tracker")
-    public ResponseEntity<PlayerDTO> updatePlayer(@RequestParam(value = "Id") Long Id, @RequestBody PlayerDTO playerDTO) {
-        return ResponseEntity.ok(playerService.updatePlayerById(Id, playerDTO));
+    @PatchMapping("/{id}")
+    public ResponseEntity<PlayerDTO> updatePlayer(@PathVariable(value = "id") Long id, @RequestBody PlayerDTO playerDTO) {
+        return ResponseEntity.ok(playerService.updatePlayerById(id, playerDTO));
     }
 }

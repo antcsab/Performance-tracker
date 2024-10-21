@@ -3,6 +3,7 @@ package com.itschool.performance_tracker.models.dtos;
 import lombok.Data;
 
 import java.time.LocalDate;
+
 @Data
 public class RequestPlayerDTO {
 

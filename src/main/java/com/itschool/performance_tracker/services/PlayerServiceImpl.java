@@ -1,7 +1,7 @@
-package com.itschool.performance_tracker.service;
+package com.itschool.performance_tracker.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.itschool.performance_tracker.entity.Player;
+import com.itschool.performance_tracker.models.entities.Player;
 import com.itschool.performance_tracker.exceptions.PlayerNotFoundException;
 import com.itschool.performance_tracker.models.dtos.PlayerDTO;
 import com.itschool.performance_tracker.models.dtos.RequestPlayerDTO;
@@ -44,27 +44,28 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public void deletePlayer(Long Id) {
-        if (Id == null) {
-            throw new IllegalArgumentException("Player ID cannot be null.");
-        }
-        Player existingPackage = playerRepository.findById(Id)
-                .orElseThrow(() -> new PlayerNotFoundException(Id));
-
-        playerRepository.delete(existingPackage);
-        log.info("Player with Id {} was deleted", Id);
-    }
-
-    public PlayerDTO updatePlayerById(Long Id, PlayerDTO playerDTO) {
-        if (Id == null) {
+    public void deletePlayer(Long id) {
+        if (id == null) {
             throw new IllegalArgumentException("Player Id cannot be null.");
         }
-        Player existingPlayer = playerRepository.findById(Id)
-                .orElseThrow(() -> new PlayerNotFoundException(Id));
+        Player existingPackage = playerRepository.findById(id)
+                .orElseThrow(() -> new PlayerNotFoundException(id));
+
+        playerRepository.delete(existingPackage);
+        log.info("Player with Id {} was deleted", id);
+    }
+
+    @Override
+    public PlayerDTO updatePlayerById(Long id, PlayerDTO playerDTO) {
+        if (id == null) {
+            throw new IllegalArgumentException("Player id cannot be null.");
+        }
+        Player existingPlayer = playerRepository.findById(id)
+                .orElseThrow(() -> new PlayerNotFoundException(id));
 
         updateExistingPlayer(existingPlayer, playerDTO);
         Player updatePlayer = playerRepository.save(existingPlayer);
-        log.info("Player with Id {} was updated", existingPlayer.getId());
+        log.info("Player with id {} was updated", existingPlayer.getId());
 
         return objectMapper.convertValue(updatePlayer, PlayerDTO.class);
     }

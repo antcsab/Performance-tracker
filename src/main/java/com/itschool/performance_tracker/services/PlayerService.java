@@ -1,4 +1,4 @@
-package com.itschool.performance_tracker.service;
+package com.itschool.performance_tracker.services;
 
 
 import com.itschool.performance_tracker.models.dtos.PlayerDTO;
