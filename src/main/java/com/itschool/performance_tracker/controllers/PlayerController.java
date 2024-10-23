@@ -20,7 +20,6 @@ public class PlayerController {
         this.playerService = playerService;
     }
 
-
     @PostMapping()
     public ResponseEntity<ResponsePlayerDTO> createPlayer(@RequestBody RequestPlayerDTO requestPlayerDTO) {
         return ResponseEntity.ok(playerService.createPlayer(requestPlayerDTO));
