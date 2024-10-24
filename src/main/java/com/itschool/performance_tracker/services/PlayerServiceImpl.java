@@ -77,4 +77,13 @@ public class PlayerServiceImpl implements PlayerService {
         existingPlayer.setContractEnd(playerDTO.getContractEnd());
         existingPlayer.setPosition(playerDTO.getPosition());
     }
+
+    @Override
+    public List<PlayerDTO> searchPlayer(String position) {
+        List<Player> players = playerRepository.findAll();
+        return players.stream()
+                .filter(player -> player.getPosition().equals(position))
+                .map(player -> objectMapper.convertValue(player, PlayerDTO.class))
+                .toList();
+    }
 }

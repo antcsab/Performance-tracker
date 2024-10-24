@@ -5,6 +5,7 @@ import com.itschool.performance_tracker.models.dtos.PlayerDTO;
 import com.itschool.performance_tracker.models.dtos.RequestPlayerDTO;
 import com.itschool.performance_tracker.models.dtos.ResponsePlayerDTO;
 import com.itschool.performance_tracker.services.PlayerService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,7 @@ public class PlayerController {
     }
 
     @PostMapping()
-    public ResponseEntity<ResponsePlayerDTO> createPlayer(@RequestBody RequestPlayerDTO requestPlayerDTO) {
+    public ResponseEntity<ResponsePlayerDTO> createPlayer(@Valid @RequestBody RequestPlayerDTO requestPlayerDTO) {
         return ResponseEntity.ok(playerService.createPlayer(requestPlayerDTO));
 
     }

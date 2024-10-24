@@ -16,4 +16,6 @@ public interface PlayerService {
     PlayerDTO updatePlayerById(Long Id, PlayerDTO playerDTO);
 
     void deletePlayer(Long Id);
+
+    List<PlayerDTO> searchPlayer(String position);
 }
