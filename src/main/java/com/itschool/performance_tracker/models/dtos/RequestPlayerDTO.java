@@ -8,7 +8,6 @@ import java.time.LocalDate;
 @Data
 public class RequestPlayerDTO {
 
-    @NotBlank(message = "This field is mandatory")
     private Long id;
 
     @NotBlank(message = "This field is mandatory")

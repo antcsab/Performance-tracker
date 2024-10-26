@@ -24,7 +24,6 @@ public class PlayerController {
     @PostMapping()
     public ResponseEntity<ResponsePlayerDTO> createPlayer(@Valid @RequestBody RequestPlayerDTO requestPlayerDTO) {
         return ResponseEntity.ok(playerService.createPlayer(requestPlayerDTO));
-
     }
 
     @GetMapping()
@@ -41,5 +40,10 @@ public class PlayerController {
     @PatchMapping("/{id}")
     public ResponseEntity<PlayerDTO> updatePlayer(@PathVariable(value = "id") Long id, @RequestBody PlayerDTO playerDTO) {
         return ResponseEntity.ok(playerService.updatePlayerById(id, playerDTO));
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<PlayerDTO>> searchPlayers(@RequestParam("position") String position) {
+        return ResponseEntity.ok(playerService.searchPlayer(position));
     }
 }

@@ -19,7 +19,4 @@ public class PlayerDTO {
 
     private Long agentId;
 
-    public Long getId() {
-        return id;
-    }
 }

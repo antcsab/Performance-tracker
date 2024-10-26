@@ -15,7 +15,6 @@ public class Agent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Column(name = "Id")
     private Long id;
 
